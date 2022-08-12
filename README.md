@@ -1,7 +1,7 @@
-# :computer: Educational materials ICS2 (informatics, artificial intelligence and control systems)
-____
+# :computer: Учебные материалы ИУ2 (Приборы и системы ориентации, стабилизации и навигации)
+
 ![ICS2_LOGO.jpeg](images/ics2_logo.jpeg)
-____
+
 # :open_file_folder: Полезные ссылки
 ссылка на сайт кафедры:
 [сайт кафедры](http://iu2.bmstu.ru/)
