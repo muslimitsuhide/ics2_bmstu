@@ -1,9 +1,9 @@
-# :computer: Материалы ИУ2
-ICS2 (IU2) informatics, artificial intelligence and control systems    
-ИУ2 Приборы и системы ориентации, стабилизации и навигации
+# :computer: Educational materials ICS2 (informatics, artificial intelligence and control systems)
 ____
 ![ICS2_LOGO.jpeg](images/ics2_logo.jpeg)
 ____
+# :open_file_folder: Полезные ссылки
+ссылка на сайт кафедры:
 [сайт кафедры](http://iu2.bmstu.ru/)
 
 большинство лаб по инфе за 2 сем можно найти тут:
