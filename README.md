@@ -1,5 +1,7 @@
 # :computer: Учебные материалы ИУ2 (Приборы и системы ориентации, стабилизации и навигации)
 
+# :computer: Training materials ICS2 (Instruments and systems of orientation, screens and navigation)
+
 ![ICS2_LOGO.jpeg](images/ics2_logo.jpeg)
 
 # :open_file_folder: Полезные ссылки
