@@ -1,0 +1,30 @@
+object Form1: TForm1
+  Left = 117
+  Height = 645
+  Top = 24
+  Width = 1024
+  BorderStyle = bsDialog
+  Caption = 'anna_pankova'
+  ClientHeight = 645
+  ClientWidth = 1024
+  OnCreate = FormCreate
+  LCLVersion = '2.0.12.0'
+  object Button1: TButton
+    Left = 888
+    Height = 25
+    Top = 608
+    Width = 115
+    Caption = 'start'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 200
+    OnTimer = Timer1Timer
+    OnStartTimer = Button1Click
+    OnStopTimer = Button2Click
+    Left = 968
+    Top = 560
+  end
+end
