@@ -1,0 +1,51 @@
+FINISH
+/CLEAR
+
+R = 80E-3
+L = 80E-3
+H = 2E - 3
+E = 2E11
+MU = 0.3
+
+/PREP7
+ET, 1, SHELL208
+MP, EX, 1, E
+MP, PRXY, 1, MU
+SECTYPE, 1, SHELL
+SECDATA, H
+
+K, 1, 2*R, 0, 0
+K, 2, R, L, 0
+K, 3, R, 2*L, 0
+
+L, 1, 2
+L, 2, 3
+
+LESIZE, ALL, L/20
+LMESH, ALL
+/ESHAPE, 1
+GPLOT
+
+/EXPAND, 27, AXIS,,, 10
+/VIEW, 1, 1, 1, 1
+GPLOT
+
+/SOL
+DK, 1, ALL, 0
+
+*DIM, P, TABLE, 2, 1, 1, Y
+
+P(1, 0) = 0
+P(1, 1) = 9800*2*L
+P(2, 0) = 2*L
+P(2, 1) = 0
+
+SFL, ALL, PRES, %P%
+/PBC, ALL,, 1
+SBCTRAN 
+/PSF, PRES, NORM, 2,0,1
+GPLOT
+
+SOLVE
+/POST1
+PLESOL, S, EQV

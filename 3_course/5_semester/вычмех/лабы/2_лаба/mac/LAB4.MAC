@@ -1,0 +1,81 @@
+FINISH
+/CLEAR
+
+L = 150
+R = 100
+B = 10
+H = 2
+q = 0.05
+E = 2E5
+mu = 0.3
+
+/PREP7
+ET,1,BEAM188,,,3
+MP,EX,1,E
+MP,PRXY,1,mu
+
+SECTYPE,1,BEAM,RECT
+SECDATA,B,H
+
+!в дз вместо прямоугольного будет круглая
+!она задается следующим образом:
+!по условию будет задан диаметр: поэтому получаем:
+!SECTYPE,1,BEAM,CSOLID
+!SECDATA,D/2
+
+K,1,0,0,0
+K,2,R,R,0
+K,3,2*R,0,0
+K,4,2*R+L,0,0
+K,5,2*R+L,0,L
+K,6,R,R+L/4,0
+K,7,2*R+L,L/4,0
+
+/PNUM,KP,1
+/VIEW,1,1,1,1
+GPLOT
+
+L,3,4
+L,4,5
+LARC,1,2,3,R
+LARC,2,3,1,R
+
+/PNUM,LINE,1
+GPLOT
+LSEL,S,,,1
+LSEL,A,,,2
+
+LATT,1,,1,,7,,1 !это в дз не надо
+ALLSEL
+
+LSEL,S,,,3
+LSEL,A,,,4
+LATT,1,,1,,6,,1
+ALLSEL
+
+LESIZE,ALL,L/10
+LMESH,ALL
+/ESHAPE,1
+EPLOT
+
+/SOL
+DK,1,ALL,0
+FK,2,FY,-q*L/8
+
+LSEL,S,,,2
+ESLL,S
+SFBEAM,ALL,1,PRES,q !тут подбирать надо будет
+ALLSEL
+/PBC,ALL,,1
+/PSF,PRES,NORM,2,0,1
+GPLOT
+!скриншот1 делаем
+
+!DSYM,SYM,Z это нужно в дз так как 2д
+SOLVE
+/POST1
+!PLDISP,1
+!делаем скриншот2
+
+PLESOL,S,EQV
+!делаем скриншот3 после выполнения этой команды
