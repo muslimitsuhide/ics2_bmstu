@@ -1,0 +1,57 @@
+FINISH
+/clear
+
+L1 = 2
+L2 = 1.5
+A = 0.002
+F1 = 1e4
+F2 = 2e4
+E = 2e11
+mu = 0.3
+
+/prep7
+ET, 1, LINK180
+MP, EX, 1, E
+MP, PRXY, 1, mu
+SECTYPE, 1, LINK 
+SECDATA, A
+
+N, 1, 0, 0, 0
+N, 2, L1, 0, 0
+N, 3, 2*L1, 0, 0
+N, 4, 3*L1, 0, 0
+N, 5, 2.5*L1, L2, 0
+N, 6, 1.5*L1, L2, 0
+N, 7, 0.5*L1, L2, 0
+
+E, 1, 7
+E, 7, 6
+E, 6, 5
+E, 5, 4
+E, 4, 3
+E, 3, 2
+E, 2, 1
+E, 7, 2
+E, 2, 6
+E, 6, 3
+E, 3, 5
+
+!включаем номера узлов
+/pnum, node, 1
+!включаем отображение толщины
+/eshape, 1
+gplot
+
+/sol 
+D, 1, UX, 0
+D, 1, UY, 0
+D, 4, UY, 0
+D, ALL, UZ, 0
+
+F, 7, FY, -F1
+F, 5, FX, F2
+
+SOLVE
+/post1
+!pldisp, 1
+plesol, s, x

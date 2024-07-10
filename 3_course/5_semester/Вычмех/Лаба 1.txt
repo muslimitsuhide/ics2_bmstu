@@ -1,0 +1,52 @@
+FINISH
+/CLEAR
+L = 100
+A = 4
+F = 1000
+E = 2e5
+mu = 0.3
+
+/prep7
+ET, 1, LINK180
+MP, EX, 1, E 
+MP, PRXY, 1, mu
+
+SECTYPE, 1, LINK
+SECDATA, A
+SECTYPE, 2, LINK
+SECDATA, 2*A
+
+N, 1, 0, 0, 0
+N, 2, L, 0, 0
+N, 3, 2*L, 0, 0
+N, 4, 3*L, 0, 0
+
+TYPE, 1
+MAT, 1
+SECNUM, 2
+E, 1, 2
+
+SECNUM, 1
+E, 2, 3
+E, 3, 4
+
+/eshape, 1
+GPLOT
+
+/SOL
+D, 1, UX, 0
+D, 4, UX, 0
+!запрещаем перемещаения всех узлов по осям оу и oz
+D, ALL, UY, 0
+D, ALL, UZ, 0
+
+!добавляем силу
+F, 3, FX, F
+
+!добавить OUTRES, ALL, ALL на ластовой винде!
+SOLVE
+/post1
+!добавить set, LAST на ластовой винде!
+!pldisp, 1
+!PRRSOL
+PLESOL, S, X
